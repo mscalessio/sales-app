@@ -1,0 +1,82 @@
+<div class="col-md-6 col-md-offset-3">
+  <h1>Dashboard</h1>
+  <p>You're logged in </p>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sales Man Data</h3>
+      </div>
+      <div class="panel-body">
+        <canvas id="pie" class="chart chart-pie" chart-data="salesMandata.data" chart-labels="salesMandata.labels" chart-options="options"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Last Year Data</h3>
+      </div>
+      <div class="panel-body">
+        <canvas id="bar" class="chart chart-bar" chart-data="lastYearData.data" chart-labels="lastYearData.labels" ></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Top Sales Order</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <a ng-click="sortType = 'userName'; sortReverse = !sortReverse">
+                  Vendor Name
+                  <span ng-show="sortType == 'userName' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'userName' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </td>
+              <td>
+                <a ng-click="sortType = 'qty'; sortReverse = !sortReverse">
+                  Qty.
+                  <span ng-show="sortType == 'qty' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'userName' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </td>
+              <td>
+                <a ng-click="sortType = 'currency'; sortReverse = !sortReverse">
+                  Value
+                  <span ng-show="sortType == 'currency' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'userName' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </td>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="order in topSalesOrders | orderBy:sortType:sortReverse">
+              <td>{{ order.userName }}</td>
+              <td>{{ order.qty }}</td>
+              <td>{{ order.value | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Top Sales Men</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+  </div>
+</div>
